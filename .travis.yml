@@ -1,8 +1,12 @@
 language: java
 
 jdk:
-  - openjdk7
+  - oraclejdk7
   - oraclejdk8
+
+env:
+  global:
+    - secure: ${COVERALLS_REPO_TOKEN}
 
 jobs:
   include:
@@ -13,4 +17,4 @@ jobs:
           token:
             secure: ${SONAR_TOKEN}
       script:
-        - ./gradlew cobertura coveralls sonarqube
+        - ./gradlew jacoco coveralls sonarqube
