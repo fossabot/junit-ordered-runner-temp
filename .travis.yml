@@ -1,1 +1,13 @@
 language: java
+
+jobs:
+  include:
+    - stage: Sonar check and code coverage reporting
+      jdk: oraclejdk8
+      addons:
+        sonarcloud:
+          organization: "sadv1r-github"
+          token:
+            secure: ${SONAR_TOKEN}
+      script:
+        - ./gradlew sonarqube
