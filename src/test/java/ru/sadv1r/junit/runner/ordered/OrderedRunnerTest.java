@@ -21,7 +21,10 @@ public class OrderedRunnerTest {
                 "needToBeFirst",
                 "needToBeSecond",
                 "needToBeThird",
-                "needToBeAfterAll"
+                "needToBeAfterAll",
+                "withoutOrder",
+                "withoutOrderPairOne",
+                "withoutOrderPairTwo"
         );
 
         assertThat(frameworkMethods).extracting(FrameworkMethod::getName).isEqualTo(strings);

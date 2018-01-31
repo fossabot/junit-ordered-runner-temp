@@ -18,9 +18,24 @@ public class Example {
     }
 
     @Test
+    public void withoutOrder() {
+        System.out.println("without Order");
+    }
+
+    @Test
     @Order(2)
     public void needToBeSecond() {
         System.out.println("Second");
+    }
+
+    @Test
+    public void withoutOrderPairOne() {
+        System.out.println("Without Order Pair One");
+    }
+
+    @Test
+    public void withoutOrderPairTwo() {
+        System.out.println("Without Order Pair Two");
     }
 
     @Test
