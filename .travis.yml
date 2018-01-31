@@ -16,4 +16,4 @@ jobs:
           token:
             secure: ${SONAR_TOKEN}
       script:
-        - ./gradlew jacoco coveralls sonarqube
+        - ./gradlew jacocoTestReport coveralls sonarqube
