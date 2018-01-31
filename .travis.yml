@@ -3,10 +3,6 @@ language: java
 jdk:
   - oraclejdk8
 
-env:
-  global:
-    - secure: ${COVERALLS_REPO_TOKEN}
-
 jobs:
   include:
     - stage: Sonar check and code coverage reporting
@@ -16,4 +12,7 @@ jobs:
           token:
             secure: ${SONAR_TOKEN}
       script:
-        - ./gradlew test jacocoTestReport coveralls
+        - sudo apt-get install jq
+        - wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
+        - ./gradlew test jacoco sonarqube
+        - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r target/site/jacoco/jacoco.xml
